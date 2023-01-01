@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('name', length: 255);
+            $table->string('slug', length: 255);
             $table->unsignedBigInteger('type')->default(0)->comment('0=video, 1=resource');
             $table->unsignedBigInteger('resources')->default(1)->comment('resources count');
             $table->string('year');
@@ -24,7 +25,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('link');
             $table->unsignedBigInteger('submitted_by');
-            $table->unsignedBigInteger('duration');
+            $table->unsignedBigInteger('duration')->comment('0=1-5 hours, 1=5-10 hours, 2=10+hours');
             $table->unsignedBigInteger('level');
             $table->unsignedBigInteger('platform_id');
 

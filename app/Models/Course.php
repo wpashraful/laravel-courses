@@ -14,6 +14,10 @@ class Course extends Model
         return $this->belongsTo(Platform::class);
     }
 
+    public function submittedBy(){
+
+        return $this->belongsTo(User::class, 'submitted_by');
+    }
 
     public function topics(){
         return $this->belongsToMany(Topic::class, 'course_topic', 'course_id', 'topic_id');
@@ -25,5 +29,25 @@ class Course extends Model
 
     public function series(){
         return $this->belongsToMany(Series::class, 'course_series', 'course_id', 'series_id');
+    }
+
+    public function durationFun($value){
+        if($value == 1){
+            return '1-5 hours';
+        }elseif($value == 2){
+            return '10+ hours';
+        }else{
+            return '5-10 hours';
+        }
+    }
+
+    public function userlevel($level){
+        if($level == 1){
+            return 'intermediate';
+        }elseif($level == 2){
+            return 'Advanced';
+        }else{
+            return 'Beginner';
+        }
     }
 }

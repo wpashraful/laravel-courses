@@ -29,10 +29,35 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $series = ['laravel', 'PHP', 'Livewire', 'Vue', 'Js'];
+
+        $series = [
+            [
+                'name'  =>  'Laravel',
+                'image' =>  'https://laravel-courses.com/storage/series/54e8baab-727e-4593-a78a-e0c22c569b61.png'
+            ],
+            [
+                'name'  =>  'PHP',
+                'image' =>  'https://laravel-courses.com/storage/series/54e8baab-727e-4593-a78a-e0c22c569b61.png'
+            ],
+            [
+                'name'  =>  'Livewire',
+                'image' =>  'https://laravel-courses.com/storage/series/54e8baab-727e-4593-a78a-e0c22c569b61.png'
+            ],
+            [
+                'name'  =>  'Vue',
+                'image' =>  'https://laravel-courses.com/storage/series/54e8baab-727e-4593-a78a-e0c22c569b61.png'
+            ],
+            [
+                'name'  =>  'Js',
+                'image' =>  'https://laravel-courses.com/storage/series/54e8baab-727e-4593-a78a-e0c22c569b61.png'
+            ]
+        ];
+
+
         foreach ($series as $item){
             Series::create([
-                'name' => $item
+                'name' => $item['name'],
+                'image' =>  $item['image']
             ]);
         }
 
@@ -76,6 +101,7 @@ class DatabaseSeeder extends Seeder
            $series_id_array = Series::all()->random(rand(1, 5))->pluck('id')->toArray();
            $course->series()->attach($series_id_array);
        }
+
 
     }
 }

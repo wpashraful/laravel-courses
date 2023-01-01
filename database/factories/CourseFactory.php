@@ -20,6 +20,7 @@ class CourseFactory extends Factory
     {
         return [
             'name' => fake()->sentence,
+            'slug' => fake()->slug,
             'type'  => rand(0, 1),
             'resources' => rand(1, 5),
             'year' => rand(2011,2022),
